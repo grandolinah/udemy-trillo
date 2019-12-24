@@ -7,9 +7,13 @@
 }
 
 .header {
+  display: flex;
   height: 7rem;
+  justify-content: space-between;
+  align-items: center;
   background-color: var(--color-white);
   border-bottom: var(--color-grey-light-2);
+  font-size: 1.4rem;
 }
 
 .content {
