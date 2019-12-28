@@ -139,8 +139,8 @@
     transform: scaleY(0);
     background-color: var(--color-primary);
     transition: transform .2s, 
-                width .4s cubic-bezier(1, 0, 0, 1) .2s,
-                background-color .1s;
+    width .4s cubic-bezier(1, 0, 0, 1) .2s,
+    background-color .1s;
   }
 
   &__item:hover::before,
@@ -267,8 +267,17 @@
   font-size: inherit;
   cursor: pointer;
 
+  & span {
+    margin-left: 3px;
+    transition: margin-left .2s;
+  }
+
   &:hover {
     color: var(--color-grey-dark-1);
+
+    span {
+      margin-left: 8px;
+    }
   }
 
   &:focus {
@@ -285,7 +294,7 @@
 
   50% {
     transform: scale(1.05);
-    box-shadow: 0 1rem 4rem rgba(0, 0, 0, 0.25);
+    box-shadow: 0 1rem 4rem rgba(0, 0, 0, .25);
   }
 
   100% {
@@ -313,7 +322,7 @@
 
   &__item {
     flex: 0 0 50%;
-    margin-bottom: 0.7rem;
+    margin-bottom: .7rem;
   }
 
   &__item::before {
@@ -321,7 +330,7 @@
     display: inline-block;
     width: 1rem;
     height: 1rem;
-    margin-right: 0.7rem;
+    margin-right: .7rem;
     // newer browsers - masks
     background-color: var(--color-primary);
     -webkit-mask-image: url('../img/chevron-thin-right.svg');
@@ -357,5 +366,68 @@
     &:not(:last-child) {
       margin-right: -1.5rem;
     }
+  }
+}
+
+//////////////////////////
+// REVIEWS
+.review {
+  position: relative;
+  margin-bottom: 3.5rem;
+  padding: 3rem;
+  overflow: hidden;
+  background-color: var(--color-white);
+  box-shadow: var(--shadow-light);
+
+  &__text {
+    position: relative;
+    z-index: 10;
+    margin-bottom: 2rem;
+  }
+
+  &__user {
+    display: flex;
+    align-items: center;
+  }
+
+  &__photo {
+    width: 4.5rem;
+    height: 4.5rem;
+    margin-right: 1.5rem;
+    border-radius: 50%;
+  }
+
+  &__user-box {
+    margin-right: auto;
+  }
+
+  &__user-name {
+    margin-bottom: .4rem;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+
+  &__user-date {
+    color: var(--color-grey-dark-3);
+    font-size: 1rem;
+  }
+
+  &__rating {
+    color: var(--color-primary);
+    font-weight: 300;
+    font-size: 2.2rem;
+  }
+
+  &::before {
+    content: '\201C';
+    position: absolute;
+    top: -2.75rem;
+    left: -1rem;
+    z-index: 1;
+    color: var(--color-grey-light-2);
+    font-size: 20rem;
+    font-family: sans-serif;
+    line-height: 1;
   }
 }
