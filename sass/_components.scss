@@ -6,10 +6,15 @@
 }
 
 //////////////////////////
+// DONE make the page 100% resposive even under 500px
+// TODO add responsive images
+
+//////////////////////////
 // SEARCH
 .search {
   flex: 0 0 40%;
   display: flex;
+  position: relative;
   align-items: center;
   justify-items: center;
 
@@ -65,12 +70,44 @@
     height: 2rem;
     fill: var(--color-grey-dark-3);
   }
+
+  //////////////////////////
+  // DONE display a box with search suggestions as soon as the user start typing in the search field
+  #searchInputautocomplete-list {
+    position: absolute;
+    top: 3rem;
+    left: 3rem;
+    z-index: 15;
+    width: 60%;
+    background-color: var(--color-grey-light-2);
+
+    @media only screen and (max-width: $bp-smallest) {
+      width: 80%;
+    }
+  }
+
+  .autocomplete-items {
+    color: var(--color-primary);
+    border-radius: 3px;
+
+    div {
+      padding: 1rem;
+      border-radius: 3px;
+      transition: background-color .4s;
+
+      &:hover {
+        background-color: var(--color-primary);
+        color: var(--color-grey-light-2);
+      }
+    }
+  }
 }
 
 //////////////////////////
 // USER NAVIGATION
 .user-nav {
   display: flex;
+  position: relative;
   align-items: center;
   align-self: stretch;
 
@@ -112,11 +149,182 @@
     color: var(--color-white);
   }
 
+  //////////////////////////
+  // DONE display a message menu when hovering over the chat icon in .user-nav maybe like fb
+  &__messages {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    top: 7rem;
+    right: 0;
+    z-index: 15;
+    width: 20rem;
+    background-color: var(--color-grey-light-1);
+    transition: visibility .2s,
+                opacity .4s;
+
+    @media only screen and (max-width: $bp-smallest) {
+      position: fixed;
+      top: 5rem;
+      right: 0;
+      width: 70%;
+      height: 100%;
+    }
+  }
+
+  &__message-list {
+    text-align: center;
+  }
+
+  &__message {
+    position: relative;
+    padding: 2rem 1rem;
+    list-style: none;
+    cursor: pointer;
+  }
+
+  &__message::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    transform: scaleY(0);
+    background-color: var(--color-primary);
+    transition: transform .2s,
+                width .4s cubic-bezier(1, 0, 0, 1) .2s,
+                background-color .1s;
+  }
+
+  &__message:hover::before,
+  &__message--active::before {
+    transform: scaleY(1);
+    width: 100%;
+  }
+
+  &__message:active::before {
+    background-color: var(--color-primary-light);
+  }
+
+  &__message-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    color: var(--color-primary);
+    text-decoration: none;
+    text-transform: uppercase;
+    border-bottom: var(--line);
+    font-size: 1.6rem;
+
+    &:hover {
+      position: relative;
+      z-index: 15;
+      color: var(--color-grey-light-1);
+    }
+  }
+
+  &__message-name {
+    display: inline-block;
+  }
+
+  &__message-date {
+    display: inline-block;
+    margin-left: auto;
+    font-size: 1rem;
+  }
+
+  &__icon-box--chat:hover &__messages {
+    opacity: 1;
+    visibility: visible;
+  }
+
   &__user-photo {
     width: 3.75rem;
     height: 3.75rem;
     margin-right: 1rem;
     border-radius: 50%;
+  }
+
+  // DONE add user menu when hovering over the username in .user-nav
+  &__menu {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    top: 7rem;
+    right: 0;
+    z-index: 15;
+    width: 20rem;
+    background-color: var(--color-grey-light-1);
+    transition: visibility .2s,
+                opacity .4s;
+
+    @media only screen and (max-width: $bp-smallest) {
+      position: fixed;
+      top: 6rem;
+      right: 0;
+      width: 70%;
+      height: 100%;
+    }
+  }
+
+  &__list {
+    list-style: none;
+    text-align: center;
+  }
+
+  &__item {
+    position: relative;
+    padding: 2rem 1rem;
+    font-size: 1.4rem;
+    cursor: pointer;
+
+    @media only screen and (max-width: $bp-smallest) {
+      font-size: 2rem;
+    }
+  }
+
+  &__item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    transform: scaleY(0);
+    background-color: var(--color-primary);
+    transition: transform .2s,
+                width .4s cubic-bezier(1, 0, 0, 1) .2s,
+                background-color .1s;
+  }
+
+  &__item:hover::before,
+  &__item--active::before {
+    transform: scaleY(1);
+    width: 100%;
+  }
+
+  &__item:active::before {
+    background-color: var(--color-primary-light);
+  }
+
+  &__link {
+    padding: 1rem;
+    color: var(--color-primary);
+    text-decoration: none;
+    text-transform: uppercase;
+    border-bottom: var(--line);
+
+    &:hover {
+      position: relative;
+      z-index: 15;
+      color: var(--color-grey-light-1);
+    }
+  }
+
+  &__user:hover &__menu {
+    opacity: 1;
+    visibility: visible;
   }
 }
 
@@ -227,9 +435,35 @@
 .gallery {
   display: flex;
 
+  &__item {
+    position: relative;
+  }
+
   &__photo {
     display: block;
     width: 100%;
+  }
+
+  //////////////////////////
+  // DONE create a caption for the .gallery__item with a nice hover effect
+  &__caption {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: var(--color-primary);
+    color: var(--color-grey-light-4);
+    width: 100%;
+    font-size: 2rem;
+    text-transform: uppercase;
+    transition: visibility .2s, opacity .4s;
+    text-align: center;
+  }
+
+  &__photo:hover ~ &__caption {
+    opacity: 1;
+    visibility: visible;
   }
 }
 
@@ -388,16 +622,19 @@
     width: 1rem;
     height: 1rem;
     margin-right: .7rem;
-    // newer browsers - masks
-    background-color: var(--color-primary);
-    -webkit-mask-image: url('../img/chevron-thin-right.svg');
-    -webkit-mask-size: cover;
-    mask-image: url('../img/chevron-thin-right.svg');
-    mask-size: cover;
+    // older browsers approach
+    background-image: url('../img/chevron-thin-right.svg');
+    background-size: cover;
 
-    // // older browsers approach
-    // background-image: url('../img/chevron-thin-right.svg');
-    // background-size: cover;
+    // newer browsers - masks
+    @supports (-webkit-mask-image: url()) or (mask-image: url()) {
+      background-color: var(--color-primary);
+      -webkit-mask-image: url('../img/chevron-thin-right.svg');
+      -webkit-mask-size: cover;
+      mask-image: url('../img/chevron-thin-right.svg');
+      mask-size: cover;
+      background-image: none;
+    }
   }
 }
 

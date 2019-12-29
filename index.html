@@ -18,7 +18,7 @@
     <header class="header">
       <img src="img/logo.png" alt="trillo-logo" class="logo">
       <form action="#" class="search">
-        <input type="text" class="search__input" placeholder="Search hotels">
+        <input type="text" class="search__input" placeholder="Search hotels" name="hotel" autocomplete="off" id="searchInput">
         <button class="search__button">
           <svg class="search__icon">
             <use xlink:href="img/sprite.svg#icon-magnifying-glass"></use>
@@ -32,15 +32,58 @@
           </svg>
           <span class="user-nav__notification">7</span>
         </div>
-        <div class="user-nav__icon-box">
+        <div class="user-nav__icon-box user-nav__icon-box--chat">
           <svg class="user-nav__icon">
             <use xlink:href="img/sprite.svg#icon-chat"></use>
           </svg>
           <span class="user-nav__notification">30</span>
+          <div class="user-nav__messages">
+            <ul class="user-nav__message-list"></ul>
+              <li class="user-nav__message">
+                <a href="#" class="user-nav__message-link">
+                  <span class="user-nav__message-name">Create new message</span>
+                </a>
+              </li>
+              <li class="user-nav__message">
+                <a href="#" class="user-nav__message-link">
+                  <span class="user-nav__message-name">Annie</span>
+                  <span class="user-nav__message-date">21st Sept, 9:03</span>
+                </a>
+              </li>
+              <li class="user-nav__message">
+                <a href="#" class="user-nav__message-link">
+                  <span class="user-nav__message-name">Nick</span>
+                  <span class="user-nav__message-date">16 Dec, 12:33</span>
+                </a>
+              </li>
+              <li class="user-nav__message">
+                <a href="#" class="user-nav__message-link">
+                  <span class="user-nav__message-name">Maria</span>
+                  <span class="user-nav__message-date">18 Dec, 14:53</span>
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
         <div class="user-nav__user">
           <img src="img/user.jpg" alt="User photo" class="user-nav__user-photo">
           <span class="user-nav__user-name">Jonas</span>
+          <div class="user-nav__menu">
+            <ul class="user-nav__list">
+              <li class="user-nav__item">
+                <a href="#" class="user-nav__link">Profile</a>
+              </li>
+              <li class="user-nav__item">
+                <a href="#" class="user-nav__link">Settings</a>
+              </li>
+              <li class="user-nav__item">
+                <a href="#" class="user-nav__link">Terms</a>
+              </li>
+              <li class="user-nav__item">
+                <a href="#" class="user-nav__link">Log out</a>
+              </li>
+            </ul>
+          </div>
         </div>
       </nav>
     </header>
@@ -90,12 +133,15 @@
         <div class="gallery">
           <figure class="gallery__item">
             <img src="img/hotel-1.jpg" alt="Photo of hotel 1" class="gallery__photo">
+            <figcaption class="gallery__caption">Hotel Palmas</figcaption>
           </figure>
           <figure class="gallery__item">
             <img src="img/hotel-2.jpg" alt="Photo of hotel 2" class="gallery__photo">
+            <figcaption class="gallery__caption">Hotel Palmas</figcaption>
           </figure>
           <figure class="gallery__item">
             <img src="img/hotel-3.jpg" alt="Photo of hotel 3" class="gallery__photo">
+            <figcaption class="gallery__caption">Hotel Palmas</figcaption>
           </figure>
         </div>
 
@@ -208,5 +254,5 @@
     </div>
   </div>
 </body>
-
+<script src="script/app.js"></script>
 </html>
