@@ -16,9 +16,16 @@
   <div class="container">
 
     <header class="header">
-      <img src="img/logo.png" alt="trillo-logo" class="logo">
+      <!--responsive images-->
+      <picture>
+        <source srcset="img/logo-small-1x.png 1x, img/logo-large-2x.png 2x" media="(max-width: 37.5em)">
+        <img srcset="img/logo-small-1x.png 1x, img/logo-large-2x.png 2x" alt="trillo-logo"
+          src="img/logo-large-2x.png 2x" class="logo">
+      </picture>
+      <!--responsive images-->
       <form action="#" class="search">
-        <input type="text" class="search__input" placeholder="Search hotels" name="hotel" autocomplete="off" id="searchInput">
+        <input type="text" class="search__input" placeholder="Search hotels" name="hotel" autocomplete="off"
+          id="searchInput">
         <button class="search__button">
           <svg class="search__icon">
             <use xlink:href="img/sprite.svg#icon-magnifying-glass"></use>
@@ -66,7 +73,9 @@
           </div>
         </div>
         <div class="user-nav__user">
-          <img src="img/user.jpg" alt="User photo" class="user-nav__user-photo">
+          <img srcset="img/user-small.jpg 100w, img/user.jpg 400w"
+            sizes="(max-width: 56.25em) 30px, (max-width: 37.5em) 30px, 30px" alt="User photo"
+            class="user-nav__user-photo" src="img/user.jpg">
           <span class="user-nav__user-name">Jonas</span>
           <div class="user-nav__menu">
             <ul class="user-nav__list">
@@ -132,15 +141,21 @@
       <main class="hotel-view">
         <div class="gallery">
           <figure class="gallery__item">
-            <img src="img/hotel-1.jpg" alt="Photo of hotel 1" class="gallery__photo">
+            <img srcset="img/hotel-1-small.jpg 300w, img/hotel-1.jpg 1500w"
+              sizes="(max-width: 56.25em) 33.33vw, (max-width: 37.5em) 33.33vw, 300px" alt="Photo of hotel 1"
+              class="gallery__photo" src="img/hotel-1.jpg">
             <figcaption class="gallery__caption">Hotel Palmas</figcaption>
           </figure>
           <figure class="gallery__item">
-            <img src="img/hotel-2.jpg" alt="Photo of hotel 2" class="gallery__photo">
+            <img srcset="img/hotel-2-small.jpg 300w, img/hotel-2.jpg 1500w"
+              sizes="(max-width: 56.25em) 33.33vw, (max-width: 37.5em) 33.33vw, 300px" alt="Photo of hotel 2"
+              class="gallery__photo" src="img/hotel-2.jpg">
             <figcaption class="gallery__caption">Hotel Palmas</figcaption>
           </figure>
           <figure class="gallery__item">
-            <img src="img/hotel-3.jpg" alt="Photo of hotel 3" class="gallery__photo">
+            <img srcset="img/hotel-3-small.jpg 300w, img/hotel-3.jpg 1500w"
+              sizes="(max-width: 56.25em) 33.33vw, (max-width: 37.5em) 33.33vw, 300px" alt="Photo of hotel 3"
+              class="gallery__photo" src="img/hotel-3.jpg">
             <figcaption class="gallery__caption">Hotel Palmas</figcaption>
           </figure>
         </div>
@@ -254,5 +269,7 @@
     </div>
   </div>
 </body>
+
 <script src="script/app.js"></script>
+
 </html>
